@@ -150,7 +150,11 @@ static void _set_ansi_color(short f, short b, attr_t attr)
 #define MAX_PACKET_SIZE 128
 
 #ifdef PDC_WIDE
-const chtype MAX_UNICODE = 0x10ffff;
+// MAX_UNICODE is a macro so cant just assign in C, has to be in preproccessor
+//const chtype MAX_UNICODE = 0x10ffff;
+#undef MAX_UNICODE
+#define MAX_UNICODE 0x10ffff
+
 const chtype DUMMY_CHAR_NEXT_TO_FULLWIDTH = 0x110000;
 
 #endif
